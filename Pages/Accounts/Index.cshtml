@@ -1,0 +1,48 @@
+﻿@page
+@model Fixed_Deposit_Interest_Core_Web_App.Pages.Accounts.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Accounts</h1>
+
+<p>
+    <a asp-page="Create">+ Add Accounts</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Account[0].Customer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Account) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerDisplayId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

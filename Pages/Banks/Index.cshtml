@@ -1,0 +1,42 @@
+﻿@page
+@model Fixed_Deposit_Interest_Core_Web_App.Pages.Banks.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Bank</h1>
+
+<p>
+    <a asp-page="Create">+Add New Bank</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bank[0].BankName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bank[0].FixedDepositPercentage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Bank) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FixedDepositPercentage)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

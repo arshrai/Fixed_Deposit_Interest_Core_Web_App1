@@ -1,0 +1,57 @@
+﻿@page
+@model Fixed_Deposit_Interest_Core_Web_App.Pages.CalculatedBalances.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Calculate Balances</h1>
+
+<p>
+    <a asp-page="Create">+ Calculate Balances</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CalculatedBalance[0].Account)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalculatedBalance[0].NumberOfYears)
+            </th>
+
+            <th>
+              Initial Balance 
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CalculatedBalance[0].TotalAccumulatedBalance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CalculatedBalance) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Account.AccountDisplayId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfYears)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Account.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAccumulatedBalance)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
